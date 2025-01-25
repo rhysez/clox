@@ -1,5 +1,6 @@
 #include <stdlib.h>
-#include <chunk.h>
+#include "chunk.h"
+#include "memory.h"
 
 void initChunk(Chunk* chunk) {
     chunk->count = 0;
@@ -7,9 +8,9 @@ void initChunk(Chunk* chunk) {
     chunk->code = NULL;
 }
 
-// If chunk has reached capacity,
+// If chunk does not have capacity for a new byte,
 // Grow capacity to double of the previous capacity.
-// Allocate a new array as the code,
+// Allocate a new array to 'code' field,
 // Store the next byte at the next free element in the array,
 // Finally, increment count.
 void writeChunk(Chunk* chunk, uint8_t byte) {
