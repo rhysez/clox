@@ -3,14 +3,14 @@
 
 #include "common.h"
 
-// A 'chunk' refers to a sequence of bytecode.
+// A 'chunk' refers to a sequence of bytecode representing instructions for the CPU.
 
-// Functions to be executed from instructions.
+// Chunk (bytecode) instructions.
 typedef enum {
     OP_RETURN, // Returns from the current function.
 } Opcode;
 
-// Bytecode instructions
+// The Chunk itself.
 typedef struct {
     int count; // The amount of allocated elements in use.
     int capacity; // The amount of elements we have allocated to the array.
