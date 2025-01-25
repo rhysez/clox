@@ -13,6 +13,10 @@
 #define GROW_ARRAY(type, pointer, oldCount, newCount) \
     (type*)reallocate(pointer, sizeof(type) * (oldCount), sizeof(type) * (newCount))
 
+// Calls reallocate but initiates new chunk to empty.
+#define FREE_ARRAY(type, pointer, oldSize) \
+    reallocate(pointer, sizeof(type) * oldSize, 0)
+
 // Handles reallocating memory at a given memory address.
 void* reallocate(void* pointer, size_t oldSize, size_t newSize);
 
