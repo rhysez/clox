@@ -9,6 +9,7 @@
 // Chunk (bytecode) instructions.
 typedef enum {
     OP_RETURN, // Returns from the current function.
+    OP_CONSTANT, // Tells Clox which constant to load next. 
 } Opcode;
 
 // The Chunk itself.
