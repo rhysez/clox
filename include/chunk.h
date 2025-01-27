@@ -16,13 +16,14 @@ typedef enum {
 typedef struct {
     int count; // The amount of allocated elements in use.
     int capacity; // The amount of elements we have allocated to the array.
-    uint8_t* code; // A pointer to an array of unsigned 8-bit integers; AKA the opcode.
+    uint8_t* code; // A pointer to an array of integers, each representing an instruction (opcode).
+    int* lines; // A pointer to an array containing line numbers of instructions.
     ValueArray constants;
 } Chunk;
 
 void initChunk(Chunk* chunk);
 void freeChunk(Chunk* chunk);
-void writeChunk(Chunk* chunk, uint8_t byte);
+void writeChunk(Chunk* chunk, uint8_t byte, int line);
 int addConstant(Chunk* chunk, Value value);
 
 #endif

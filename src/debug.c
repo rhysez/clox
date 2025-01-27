@@ -36,6 +36,14 @@ static int simpleInstruction(const char* name, int offset)
 int disassembleInstruction(Chunk* chunk, int offset)
 {
     printf("%04d ", offset);
+    // This if/else checks if the current instruction comes from the same line as the previous.
+    // If it does, we simply print a "|" to signify that it is a continuation of the same instruction.
+    // Else, we print the source line number of the instruction. 
+    if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1]) {
+      printf("  | ");
+    } else {
+      printf("%4d ", chunk->lines[offset]);
+    }
 
     // Position (char) in chunk where current instruction lies.
     uint8_t instruction = chunk->code[offset];
