@@ -7,11 +7,11 @@ int main(int argc, const char* argv[]) {
   initChunk(&chunk);
 
   int constant = addConstant(&chunk, 1.2); // Returns index of constant in pool. 
-  writeChunk(&chunk, OP_CONSTANT); // Write opcode to next element of bytecode array. 
-  writeChunk(&chunk, constant); // Write constant index operand so Clox knows where to find the constant to execute.
-  writeChunk(&chunk, OP_RETURN);
-  disassembleChunk(&chunk, "test chunk");
-  freeChunk(&chunk);
+  writeChunk(&chunk, OP_CONSTANT); // Write instruction (opcode) to next element of bytecode array. 
+  writeChunk(&chunk, constant); // Write constant operand to next element of bytecode array.
+  writeChunk(&chunk, OP_RETURN); // Add our return instruction to next element in bytecoe array.
+  disassembleChunk(&chunk, "test chunk"); // Iterate through the chunk and execute instructions.
+  freeChunk(&chunk); // Free the chunk from memory.
 
   return 0;
 }

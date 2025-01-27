@@ -9,6 +9,7 @@ void disassembleChunk(Chunk* chunk, const char* name)
 
     // Note: Here we do not increment offset directly in the loop.
     // Instead, disassembleInstruction returns the offset of the next instruction.
+    // Offset is then continually updated as Clox traverses the chunk's bytecode.
     for (int offset = 0; offset < chunk->count;)
     {
         offset = disassembleInstruction(chunk, offset);
